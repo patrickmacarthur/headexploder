@@ -98,24 +98,31 @@ void HeaderExploder::explode()
         {
             m_source << separator << "\n";
             string fLine = line;
-            bool foundComment = true;
+            bool foundComment = false;
             getline( m_header, line );
-            if ( ! line.find( "//" ) != string::npos )
+            if ( line.find( "//" ) != string::npos )
             {
-                foundComment = false;
+                foundComment = true;
+                m_source << "/*\n";
             }
+
             while ( m_header && line.find( "//" ) != string::npos )
             {
-                while ( line.size() > 1 && isspace( line[0] ) )
+                while ( line.size() > 1 &&
+                        ( isspace( line[0] ) || line[0] == '/' ) )
                 {
                     line = line.substr( 1 );
                 }
-                m_source << line << "\n";
+                m_source << " * " << line << "\n";
                 getline( m_header, line );
+            }
+            if ( foundComment )
+            {
+                m_source << " */\n";
             }
             m_source << getFunctionPrototype( class_names.top(), fLine )
                  << "\n{\n}\n\n";
-            if ( foundComment == false )
+            if ( ! foundComment )
             {
                 continue;
             }
