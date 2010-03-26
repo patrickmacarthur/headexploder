@@ -3,8 +3,8 @@
 CXX=g++
 CXXFLAGS=-g -Wall
 
-explode : explode.o HeaderExploder.o
-	${CXX} ${CXXFLAGS} -o explode explode.o HeaderExploder.o
+headexploder : explode.o HeaderExploder.o
+	${CXX} ${CXXFLAGS} -o headexploder explode.o HeaderExploder.o
 
 explode.o : explode.cc HeaderExploder.h
 	${CXX} ${CXXFLAGS} -c -o explode.o explode.cc
@@ -15,4 +15,4 @@ HeaderExploder.o : HeaderExploder.cc HeaderExploder.h
 .PHONY: clean
 
 clean:
-	rm -f explode *.o
+	rm -f headexploder *.o
