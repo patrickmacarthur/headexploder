@@ -18,8 +18,6 @@
     along with HeadExploder.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/* vi: set shiftwidth=4 textwidth=80: */
-
 #include "HeaderExploder.h"
 
 #include <iostream>
@@ -182,3 +180,4 @@ string HeaderExploder::getFunctionPrototype( const string & className,
     return result;
 }
 
+/* vi: set shiftwidth=4 textwidth=80: */

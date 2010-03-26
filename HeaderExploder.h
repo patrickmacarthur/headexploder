@@ -20,9 +20,6 @@
     along with HeadExploder.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/* vi: set shiftwidth=4 textwidth=80: */
-
-
 #include <istream>
 #include <ostream>
 #include <fstream>
@@ -60,4 +57,5 @@ class HeaderExploder
         std::ofstream m_source;
 };
 
+/* vi: set shiftwidth=4 textwidth=80: */
 #endif

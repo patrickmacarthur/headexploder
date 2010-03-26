@@ -18,8 +18,6 @@
     along with HeadExploder.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/* vi: set shiftwidth=4 textwidth=80: */
-
 #include "HeaderExploder.h"
 
 #include <cstdlib>
@@ -47,3 +45,5 @@ int main( int argc, char *argv[] )
 
     return EXIT_SUCCESS;
 }
+
+/* vi: set shiftwidth=4 textwidth=80: */
