@@ -185,7 +185,14 @@ string HeaderExploder::getFunctionPrototype( const string & className,
         line_stream >> token;
     }
 
-    return result;
+    if ( isspace( result[ result.size() - 1 ] ) )
+    {
+        return result.substr( 0, result.size() - 1 );
+    }
+    else
+    {
+        return result;
+    }
 }
 
 /* vi: set shiftwidth=4 textwidth=80: */
