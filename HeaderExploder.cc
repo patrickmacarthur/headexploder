@@ -88,7 +88,8 @@ void HeaderExploder::explode()
             m_source << "#include \"" << name << ".h\"\n\n";
         }
 
-        if ( line.find( "};" ) != string::npos && in_class > 0 )
+        if ( line.find( "};" ) != string::npos && in_class > 0 &&
+                line.find( "{};" ) == string::npos )
         {
             std::cerr << "Left class\n";
             --in_class;
