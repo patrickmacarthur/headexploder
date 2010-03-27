@@ -163,6 +163,11 @@ string HeaderExploder::getFunctionPrototype( const string & className,
     bool scopeInserted = false;
     while ( line_stream )
     {
+        if ( token == "virtual" )
+        {
+            line_stream >> token;
+            continue;
+        }
 
         if ( ! scopeInserted && ( token.find( "(" ) != string::npos ||
              token.find( "operator" ) != string::npos ) )
