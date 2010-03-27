@@ -23,6 +23,7 @@
 #include <iostream>
 #include <sstream>
 #include <stack>
+#include <cctype>
 
 using std::string;
 
@@ -82,7 +83,9 @@ void HeaderExploder::explode()
         {
             std::cerr << "Found class " << line << '\n';
             ++in_class;
-            class_names.push( getClassName( line ) );
+            string name = getClassName( line );
+            class_names.push( name );
+            m_source << "#include \"" << name << ".h\"\n\n";
         }
 
         if ( line.find( "};" ) != string::npos && in_class > 0 )
@@ -140,7 +143,7 @@ string HeaderExploder::getClassName( const string & line )
         ++iter;
     }
 
-    while ( iter != line.end() && ! isspace( *iter ) )
+    while ( iter != line.end() && ! isspace( *iter ) && isalnum( *iter ) )
     {
         my_class_name.push_back( *iter );
         ++iter;
