@@ -79,13 +79,22 @@ void HeaderExploder::explode()
             continue;
         }
 
+
         if ( line.find( "class" ) != string::npos )
         {
-            std::cerr << "Found class " << line << '\n';
-            ++in_class;
             string name = getClassName( line );
-            class_names.push( name );
-            m_source << "#include \"" << name << ".h\"\n\n";
+            m_source << "#include \"" << name << ".h\"\n";
+            if ( line.find( ";" ) != string::npos )
+            {
+                std::cerr << "Got forward declaration " << name << '\n';
+            }
+            else
+            {
+                std::cerr << "Found class " << name << '\n';
+                ++in_class;
+                class_names.push( name );
+                m_source << "\n";
+            }
         }
 
         if ( line.find( "};" ) != string::npos && in_class > 0 &&
