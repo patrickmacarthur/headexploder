@@ -1,0 +1,24 @@
+HeadExploder
+============
+
+A tool to "explode" a C++ header file containing one or more classes into a C++
+source file.
+
+Please note that this tool was made for my own use and makes many terrible
+assumptions about the formatting of your source file.  For one, it requires
+that comments for methods are below the declarations of the methods:
+
+   int method( int a ) const;
+     // my comment
+
+This is because this is the way my CS professor formats his header files, and I
+have only used this tool on header files in this format.
+
+Usage:
+  $ headexploder <header file> <file to create>
+
+Example:
+  $ headexploder MyClass.h MyClass.cc
+
+Please report bugs to pio3@unh.edu
+
